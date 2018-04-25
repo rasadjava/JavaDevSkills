@@ -1,0 +1,34 @@
+	How to deploy springboot application in PCF
+URL: https://www.youtube.com/watch?v=hzWEw--OziQ
+	How to start working with PCF(PivotalCloudFoundry)
+URL: https://www.youtube.com/watch?v=aLOGDUps8w8&index=2&list=PLf0swTFhTI8qGExF3HH7frOiYPV7h1lD4
+	Sample Manifest file
+#### manifest.yml ###
+---
+applications:
+- name: SampleSpringBootApplication
+  path: target/SampleSpringBootApp-0.0.1-SNAPSHOT.jar
+  domain: cfapps.io
+  memory: 778m
+  instances: 1
+Note: PCF will discover manifest.yml file automatically with “cf push command”
+
+PCF Commands:
+•	Command to login
+cmd> cf login -a api.run.pivotal.io
+•	Command to change one space to other space
+cmd> cf target -o "PrasadOrg" -s "PrasadSpace"
+•	To create the space 
+cmd> cf create-space PrasadSpace -o PrasadOrg
+•	to display the Organizations
+cmd> cf orgs
+•	to display the spaces
+cmd> cf spaces
+•	to logout
+cmd> cf logout
+•	to see the logs
+cmd> cf logs SampleSpringBootApplication –recent
+•	to delete existing projects from PCF
+cmd> cf delete SampleSpringBootApplication -f –r
+where –f force deletion and –r delete related routes
+
